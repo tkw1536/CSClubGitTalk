@@ -4,6 +4,18 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 
+% Code
+\usepackage{listings}
+
+\lstdefinestyle{ShellCmd}{
+    language=bash,
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{gray!10},
+    linewidth=0.9\linewidth,
+    breaklines=true
+}
+\newcommand\shellcmd[1]{\colorbox{gray!10}{\lstinline[style=ShellCmd,mathescape]`#1`}}
+
 % Hide navigation symbols, show git
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
@@ -22,11 +34,11 @@
 \parbox{\wd0}{\box0}\endgroup\ }
 
 % Have a fancy git logo
-\newcommand{\git}{\logoimage{imgs/git_logo}{10pt}}
-\newcommand{\github}{\logoimage{imgs/github_logo}{10pt}}
+\newcommand{\git}{\logoimage{imgs/git_logo}{8pt}}
+\newcommand{\github}{\logoimage{imgs/github_logo}{8pt}}
 
 %META-INFORMATION
-\title{\logoimage{imgs/git_logo}{40px} - the content tracker}
+\title{An introduction to (version control with) \logoimage{imgs/git_logo}{40px}}
 \author{Tom Wiesing}
 \institute{CS Club}
 \date{September 5, 2015}
@@ -37,74 +49,42 @@
     
     \begin{frame}{Overview}
       \begin{itemize}
-          \item Introduction: What is version control and why use git?
-          \item Getting started: The git model
-          \item Using git: clone, init, add, commit, push, pull
-          \item Going further: Branching, Merging, Stashing and more
-          \item \github: Collaboration with Issues, Forking, Pull Requests
-          \item Behind the Scenes: Internals of Git
-          \item Demo / Hacking / Questions
-      \end{itemize}
-    \end{frame}
-
-    %intro - what is version control and why git?
-    \begin{frame}{Introduction (1): What is version control?}
-      \begin{columns}[onlytextwidth]
-        \begin{column}{0.6\textwidth}
+          \item Introduction
           \begin{itemize}
-              \item tracks any kind of content
-                \inote{e.g. websites, software, presentations}
-              \item knows about different versions
-              \begin{itemize}
-                \item knows what was changed when
-                \item can revert changes if something goes wrong
-              \end{itemize}
-              \item has a collaboration component
-              \begin{itemize}
-                \item several people can work together on the same project
-                \item changes can be synced
-                \item easy to see who changed what
-              \end{itemize}
-            \end{itemize}
-        \end{column}
-        \begin{column}[t]{0.4\textwidth}
-          \includegraphics[width=0.95\textwidth]{imgs/vc_wikipedia}
-        \end{column}
-      \end{columns}
-    \end{frame}
-    
-    \begin{frame}{Introduction (2): What is git and why use it?}
-      \begin{columns}[onlytextwidth]
-        \begin{column}{0.6\textwidth}
-          \begin{itemize}
-            \item git -- ``the stupid content tracker''
-            \begin{itemize}
-              \item open-source version control system
-              \item fast, scalable, distributable
-            \end{itemize}
-            \item originally developed in 2005 for maintaining the linux kernel source code
+            \item What is version control?
+            \item What is git? Why use it?
           \end{itemize}
-        \end{column}
-        \begin{column}[t]{0.4\textwidth}
-          \includegraphics[width=0.95\textwidth]{imgs/git_logo}
-        \end{column}
-      \end{columns}
-    \end{frame}
-    
-    \begin{frame}{Introduction (3): What is git and why use it?}
-      \begin{itemize}
-        \item git is both for beginners and advanced users
-        \begin{itemize}
-          \item provides high-level-commands
-          \item additonally gives full access to internals
-        \end{itemize}
-        \item git is distributed - and it is easy to sync changes
-        \begin{itemize}
-          \item no central server to share content required
-          \item changes can be synced in many ways
-          \item[] {\tiny \hfill http(s), ssh, git protocol, diffs via email, \dots}
-        \end{itemize}
+          \item Getting started with git
+          \begin{itemize}
+            \item How does git store versions?
+            \item How do I use clone, init, add, commit?
+            \item How do I share content?
+          \end{itemize}
+          \item Going further
+          \begin{itemize}
+            \item Branching \& Merging
+            \item Working with Remotes
+            \item Stashing \& other useful commands
+          \end{itemize}
+          \item A brief introduction to \github
+          \begin{itemize}
+            \item Collaborating with other people
+            \item Making issues
+            \item Forking repositories and making pull requests
+          \end{itemize}
       \end{itemize}
     \end{frame}
+    
+    \input{parts/01_intro.tex}
+    \input{parts/02_basics.tex}
+    \input{parts/03_advanced.tex}
+    \input{parts/04_github.tex}
+
+% Sources:
+% * https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png
+% * https://git-scm.com/figures/18333fig0106-tn.png
+% * https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png
+% * http://www.cs.toronto.edu/~kenpu/articles/cs/git-intro/ex6.png
+% * https://en.wikipedia.org/wiki/Version_control
     
 \end{document}
