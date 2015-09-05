@@ -14,13 +14,14 @@
   \begin{columns}[onlytextwidth]
     \begin{column}{0.5\textwidth}
       \begin{itemize}
-        \item you can make commands on branches like you would normally
-        \inote{but you need to switch to the branch first}
+        \item you can make commits on branches like you would normally
+          \inote{but you need to switch to them first}
         \begin{itemize}
           \item \shellcmd{git branch name} - create a branch
           \item \shellcmd{git checkout name} - switch to it
           \item \shellcmd{git merge name} - merge a branch back into the current one
         \end{itemize}
+        \item Time for another short demo
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -45,5 +46,70 @@
         \item (you need to do this before starting to merge)
       \end{itemize}
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Going further (4): Working with remotes}
+  \begin{itemize}
+    \item a remote is a clone of the same repository in another location
+    \inote{usually on a remote server}
+    \item you can add and remove remotes dynamically
+    \inote{e.g. \shellcmd{git remote add name url}}
+    \item when you \shellcmd{git clone} a repository a remote ``origin'' will be added automatically
+    \item remotes have branches and you can push and pull your local branches
+    \begin{itemize}
+      \item \shellcmd{git push remote branch} - pushes the \textit{branch} to the remote \textit{remote}
+        \inote{if you use \shellcmd{git push -u} you can just you can omit the names afterwards}
+      \item \shellcmd{git fetch remote/branch} - fetches new commits from the remote branch only. 
+        \inote{It can happen that only a rebase takes place}
+      \item \shellcmd{git pull} - fetches new commits from the tracked branch and merges them into the local branch
+    \end{itemize}  
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Going further (5): Common Practices for Pushing \& Pulling}
+  \begin{columns}[onlytextwidth]
+    \begin{column}{0.7\textwidth}
+      \begin{itemize}
+        \item if you clone a repository, you usually only need \shellcmd{git push} and \shellcmd{git pull}
+        \item before pushing new commits you need to pull first
+          \inote{there is \shellcmd{git push --force} but you {\huge never} want to do this because this can lead to loss of data. }
+        \item when pulling new commits, merge conflicts might occur
+          \inote{use \shellcmd{git fetch remote/branch} and then \shellcmd{git merge remote/branch} to resolve conflicts}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=0.9\textwidth]{imgs/no_force}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Going further (5): Common Practices for Pushing \& Pulling}
+  \begin{columns}[onlytextwidth]
+    \begin{column}{0.7\textwidth}
+      \begin{itemize}
+        \item if you clone a repository, you usually only need \shellcmd{git push} and \shellcmd{git pull}
+        \item before pushing new commits you need to pull first
+          \inote{there is \shellcmd{git push --force} but you {\huge never} want to do this because this can lead to loss of data. }
+        \item when pulling new commits, merge conflicts might occur
+          \inote{use \shellcmd{git fetch remote/branch} and then \shellcmd{git merge remote/branch} to resolve conflicts}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=0.9\textwidth]{imgs/no_force}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Going further (6): Other useful commands}
+  \begin{itemize}
+    \item \shellcmd{git diff} - to see unstaged changes inside files
+    \item \shellcmd{git log} - show a log of recent commits on the current branch
+      \inote{exit by pressing \textit{q}}
+    \item \shellcmd{git commit --amend} - Edit the previous commit instead of creating a new one. 
+    \item \shellcmd{git reset HEAD files} - removes changes from the staging area
+    \item \shellcmd{git stash} - Stash your changes for a rainy day
+    \item \shellcmd{git tag} - give names to certain commits
+    \item \dots
   \end{itemize}
 \end{frame}
